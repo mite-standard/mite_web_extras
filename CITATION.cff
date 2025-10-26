@@ -1,0 +1,25 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Modern Python
+message: >-
+  This package acts as a template for creating modern Python
+  projects. It is released to the public domain under the
+  Unlicense. You do not need to reference the creator of
+  this record.
+type: software
+authors:
+  - given-names: Mitja M
+    family-names: Zdouc
+    affiliation: Wageningen University & Research
+    orcid: 'https://orcid.org/0000-0001-6534-6609'
+repository-code: 'https://github.com/medema-group/modern_python'
+url: 'https://github.com/medema-group'
+abstract: >-
+  This repository acts as a template to set up modern Python
+  projects. For more information, see the README.md file
+keywords:
+  - Python
+  - Software engineering
+license: Unlicense
