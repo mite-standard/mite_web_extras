@@ -18,7 +18,7 @@ For more information, visit the [MITE Data Standard Organization page](https://g
 
 ## Quickstart
 
-Update the auxiliary files
+Update the auxiliary files (automatically updates to the newest version of `mite_data`)
 
 ```commandline
 docker build -t mite-cli .
@@ -35,6 +35,3 @@ This repository is licensed under the [MIT License](LICENSE)
 
 You can find additional citation information in the [CITATION.cff](CITATION.cff) file. 
 
-## For Developers
-
-Install package and run tests

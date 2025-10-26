@@ -28,6 +28,8 @@ from pathlib import Path
 
 import coloredlogs
 
+from .download_manager import DownloadManager
+
 
 def config_logger() -> logging.Logger:
     """Set up a module-specific logger with nice formatting
@@ -52,19 +54,9 @@ def main() -> None:
     logger = config_logger()
     logger.info("Started mite_web_extras")
 
-    path = Path("/data/test.json")  # always use /data for mounted files
-
-    with open(path, "w", encoding="utf-8") as fout:
-        fout.write(json.dumps({"test": "test"}, indent=2, ensure_ascii=False))
-
-    if path.exists():
-        logger.info("test file created")
-        logger.info(path)
-
-    # download mite_data
-    # create blast files
-    # download uniprot entries in bulk pdb
-    # generate images
+    dnld_mngr = DownloadManager()
+    dnld_mngr.download_data()
+    dnld_mngr.organize_data()
 
     logger.info("Completed mite_web_extras")
 

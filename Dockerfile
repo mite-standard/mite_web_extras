@@ -32,4 +32,4 @@ COPY . .
 RUN uv sync
 
 # Set default entrypoint to your CLI
-ENTRYPOINT ["uv", "run", "python3", "src/mite_web_extras/main.py"]
+ENTRYPOINT ["uv", "run", "python3", "-m", "mite_web_extras.main"]

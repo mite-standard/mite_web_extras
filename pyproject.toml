@@ -10,10 +10,14 @@ authors = [
 ]
 
 dependencies = [
+    "AlphaFetcher~=0.2",
     "coloredlogs~=15.0",
     "pre-commit~=4.3",
+    "psycopg2-binary",
     "pytest~=8.4",
-    "ruff~=0.13"
+    "pydantic~=2.2",
+    "requests~=2.32",
+    "ruff~=0.13",
 ]
 
 # Below are settings for different tools we use for testing and linting

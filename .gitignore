@@ -1,6 +1,8 @@
 # Config
 .idea
 .ruff-cache
+data/data
+data/fasta
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
