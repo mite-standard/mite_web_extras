@@ -1,12 +1,30 @@
-"""TODO: ADD ONE-LINE DESCRIPTION OF PURPOSE (WHY) OF FILE/CODE
+"""Entrypoint of data generation script
 
-TODO: ADD COPYRIGHT INFORMATION (YEAR-YEAR, NAME)
+Copyright (c) 2025 to present Mitja M. Zdouc, PhD and individual contributors.
 
-TODO: ADD COPYRIGHT TEXT
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 """
 
+import json
 import logging
 import sys
+from pathlib import Path
 
 import coloredlogs
 
@@ -32,7 +50,24 @@ def config_logger() -> logging.Logger:
 def main() -> None:
     """Function to execute main body of code"""
     logger = config_logger()
-    logger.debug("Hello, world")
+    logger.info("Started mite_web_extras")
+
+    path = Path("/data/test.json")  # always use /data for mounted files
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(path, "w", encoding="utf-8") as fout:
+        fout.write(json.dumps({"test": "test"}, indent=2, ensure_ascii=False))
+
+    if path.exists():
+        logger.info("test file created")
+        logger.info(path)
+
+    # download mite_data
+    # create blast files
+    # download uniprot entries in bulk pdb
+    # generate images
+
+    logger.info("Completed mite_web_extras")
 
 
 if __name__ == "__main__":

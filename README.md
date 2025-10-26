@@ -16,6 +16,15 @@ This repository manages auxiliary files for the [MITE Webpage](https://mite.bioi
 
 For more information, visit the [MITE Data Standard Organization page](https://github.com/mite-standard) or read our [publication](https://doi.org/10.1093/nar/gkaf969).
 
+## Quickstart
+
+Update the auxiliary files
+
+```commandline
+docker build -t mite-cli .
+docker run --rm -v $(pwd)/data:/data -u $(id -u):$(id -g) -e HOME=/tmp mite-cli
+```
+
 ## Attribution
 
 ### License
@@ -29,9 +38,3 @@ You can find additional citation information in the [CITATION.cff](CITATION.cff)
 ## For Developers
 
 Install package and run tests
-
-```commandline
-uv sync
-uv run pre-commit install
-uv run pytest
-```

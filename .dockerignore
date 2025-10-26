@@ -1,0 +1,9 @@
+.venv
+.github
+tests
+.git
+.idea
+.pre-commit-config.yaml
+.pytest_cache
+.ruff_cache
+
