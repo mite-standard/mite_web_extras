@@ -53,7 +53,6 @@ def main() -> None:
     logger.info("Started mite_web_extras")
 
     path = Path("/data/test.json")  # always use /data for mounted files
-    path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(path, "w", encoding="utf-8") as fout:
         fout.write(json.dumps({"test": "test"}, indent=2, ensure_ascii=False))
