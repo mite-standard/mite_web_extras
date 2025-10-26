@@ -1,12 +1,12 @@
 [project]
-name = "your_cool_project"
-version = "1.1.1"
-description = "Example repository demonstrating a modern Python project setup"
+name = "mite_web_extras"
+version = "0.1.0"
+description = "Contains auxiliary files for mite_web"
 readme = "README.md"
 requires-python = ">=3.12"
 license-files = { paths = ["LICENSE"] }
 authors = [
-    { name = "Your Name Here", email = "your@name.com" }
+    { name = "Mitja M. Zdouc", email = "zdoucmm@gmail.com" }
 ]
 
 dependencies = [
