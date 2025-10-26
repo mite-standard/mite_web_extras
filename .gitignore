@@ -3,6 +3,7 @@
 .ruff-cache
 data/data
 data/fasta
+data/pdb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

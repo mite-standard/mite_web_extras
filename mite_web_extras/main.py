@@ -29,6 +29,7 @@ from pathlib import Path
 import coloredlogs
 
 from .download_manager import DownloadManager
+from .pdb_manager import PdbManager
 
 
 def config_logger() -> logging.Logger:
@@ -57,6 +58,10 @@ def main() -> None:
     dnld_mngr = DownloadManager()
     dnld_mngr.download_data()
     dnld_mngr.organize_data()
+
+    pdb_mngr = PdbManager()
+    pdb_mngr.collect_uniprot_acc()
+    pdb_mngr.download_pdbs()
 
     logger.info("Completed mite_web_extras")
 
