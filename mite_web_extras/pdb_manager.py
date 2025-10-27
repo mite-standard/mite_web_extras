@@ -59,8 +59,9 @@ class PdbManager(BaseModel):
         """Download PDB-files from AlphaFold using the uniprot acc ids"""
         trgt = self.data.joinpath("pdb")
         if trgt.exists():
-            shutil.rmtree(trgt)
-        trgt.mkdir(exist_ok=True)
+            logger.warning(f"{trgt.name} already exists. Remove {trgt.name} to re-download - SKIP")
+            return
+        trgt.mkdir()
 
         fetcher = AlphaFetcher(base_savedir=str(trgt))
         fetcher.add_proteins(proteins=[i for i in self.uniprot_acc.keys()])

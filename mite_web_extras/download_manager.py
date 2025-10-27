@@ -50,6 +50,11 @@ class DownloadManager(BaseModel):
         Raises:
             RuntimeError: Could not download files
         """
+        trgt = self.data.joinpath("data")
+        if trgt.exists():
+            logger.warning(f"{trgt.name} already exists. Remove {trgt.name} and fasta dirs to re-download - SKIP")
+            return
+
         response_metadata = requests.get(self.record_url)
         if response_metadata.status_code != 200:
             raise RuntimeError(
@@ -71,6 +76,8 @@ class DownloadManager(BaseModel):
 
         with open(self.data.joinpath("version.json"), "w") as f:
             f.write(json.dumps({"version_mite_data": f"{version}"}))
+
+        self.organize_data()
 
     def organize_data(self) -> None:
         """Unpacks data, moves to convenient location, cleans up

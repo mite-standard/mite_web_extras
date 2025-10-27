@@ -57,7 +57,6 @@ def main() -> None:
 
     dnld_mngr = DownloadManager()
     dnld_mngr.download_data()
-    dnld_mngr.organize_data()
 
     pdb_mngr = PdbManager()
     pdb_mngr.collect_uniprot_acc()
