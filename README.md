@@ -18,6 +18,7 @@ This repository manages auxiliary files for the [MITE Webpage](https://mite.bioi
 
 - Downloads the newest version of `mite_data`
 - Generates the BLAST databases needed by MITE Web
+- Generates the Jinja2-compatibe mite JSON files
 - Downloads `.pdb` files from AlphaFoldDB matching the UniProt Accessions in the MITE data files
 - Generates visualizations of predicted protein structures
 
