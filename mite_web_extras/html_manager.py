@@ -43,13 +43,17 @@ class HtmlJsonManager(BaseModel):
     def convert_json_html(self) -> None:
         """Convert regular mite json files to html-compatible ones"""
         for entry in self.data.joinpath("data").iterdir():
-            trgt = self.data.joinpath(f"html/{entry.name}")
-            if trgt.exists():
-                logger.info(f"Skipping {trgt.name} (already exists)")
-                continue
-
             with open(entry) as infile:
                 mite_data = json.load(infile)
+
+            trgt = self.data.joinpath(f"html/{entry.name}")
+            if trgt.exists():
+                with open(trgt) as infile:
+                    trgt_data = json.load(infile)
+
+                if mite_data["changelog"] == trgt_data["changelog"]:
+                    logger.info(f"Skipping {trgt.name} (identical changelog)")
+                    continue
 
             parser = MiteParser()
             parser.parse_mite_json(data=mite_data)

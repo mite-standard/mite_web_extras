@@ -56,7 +56,7 @@ class BlastManager(BaseModel):
 
     def generate_blast_db(self: Self) -> None:
         """Starts subprocess to generate a BLAST DB from the (downloaded) protein FASTA files"""
-        blast = self.data.joinpath("blast")
+        blast = self.data.joinpath("blastlib")
         if blast.exists():
             shutil.rmtree(blast)
 
