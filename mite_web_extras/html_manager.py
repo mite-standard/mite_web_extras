@@ -48,7 +48,7 @@ class HtmlJsonManager(BaseModel):
 
             trgt = self.data.joinpath(f"html/{entry.name}")
             if trgt.exists():
-                with open(entry) as infile:
+                with open(trgt) as infile:
                     trgt_data = json.load(infile)
 
                 if mite_data["changelog"] == trgt_data["changelog"]:
