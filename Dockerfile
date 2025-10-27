@@ -31,5 +31,8 @@ COPY . .
 # Install package and dependencies
 RUN uv sync
 
+RUN chmod +x ./entrypoint_docker.sh
+RUN chmod +x ./mite_web_extras/run_pymol.sh
+
 # Set default entrypoint to your CLI
-ENTRYPOINT ["uv", "run", "python3", "-m", "mite_web_extras.main"]
+ENTRYPOINT ["./entrypoint_docker.sh"]
