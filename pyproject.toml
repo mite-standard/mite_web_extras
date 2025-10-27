@@ -1,6 +1,6 @@
 [project]
 name = "mite_web_extras"
-version = "0.2.0"
+version = "0.3.0"
 description = "Contains auxiliary files for mite_web"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -12,6 +12,7 @@ authors = [
 dependencies = [
     "AlphaFetcher~=0.2",
     "coloredlogs~=15.0",
+    "mite_extras",
     "pre-commit~=4.3",
     "psycopg2-binary",
     "pytest~=8.4",

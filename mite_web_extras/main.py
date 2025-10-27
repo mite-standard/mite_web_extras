@@ -30,6 +30,7 @@ import coloredlogs
 
 from .blast_manager import BlastManager
 from .download_manager import DownloadManager
+from .html_manager import HtmlJsonManager
 from .pdb_manager import PdbManager
 
 
@@ -66,6 +67,9 @@ def main() -> None:
     pdb_mngr = PdbManager()
     pdb_mngr.collect_uniprot_acc()
     pdb_mngr.download_pdbs()
+
+    html_mngr = HtmlJsonManager()
+    html_mngr.convert_json_html()
 
     logger.info("Completed mite_web_extras")
 
