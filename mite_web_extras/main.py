@@ -28,6 +28,7 @@ from pathlib import Path
 
 import coloredlogs
 
+from .blast_manager import BlastManager
 from .download_manager import DownloadManager
 from .pdb_manager import PdbManager
 
@@ -57,6 +58,10 @@ def main() -> None:
 
     dnld_mngr = DownloadManager()
     dnld_mngr.download_data()
+
+    blst_mngr = BlastManager()
+    blst_mngr.concat_fasta_files()
+    blst_mngr.generate_blast_db()
 
     pdb_mngr = PdbManager()
     pdb_mngr.collect_uniprot_acc()
