@@ -1,5 +1,8 @@
-<mite_web_extras>
+mite_web_extras
 ==========
+
+[![DOI](https://zenodo.org/badge/1083685650.svg)](https://doi.org/10.5281/zenodo.17453501)
+
 
 Contents
 -----------------
