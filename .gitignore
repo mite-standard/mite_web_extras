@@ -1,6 +1,9 @@
 # Config
 .idea
 .ruff-cache
+data/data
+data/fasta
+data/pdb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -57,7 +60,6 @@ cover/
 
 # Translations
 *.mo
-*.pot
 
 # Django stuff:
 *.log

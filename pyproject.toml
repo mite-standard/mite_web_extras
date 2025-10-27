@@ -1,26 +1,27 @@
 [project]
-name = "your_cool_project"
-version = "1.1.1"
-description = "Example repository demonstrating a modern Python project setup"
+name = "mite_web_extras"
+version = "0.1.0"
+description = "Contains auxiliary files for mite_web"
 readme = "README.md"
 requires-python = ">=3.12"
 license-files = { paths = ["LICENSE"] }
 authors = [
-    { name = "Your Name Here", email = "your@name.com" }
+    { name = "Mitja M. Zdouc", email = "zdoucmm@gmail.com" }
 ]
 
 dependencies = [
+    "AlphaFetcher~=0.2",
     "coloredlogs~=15.0",
     "pre-commit~=4.3",
+    "psycopg2-binary",
     "pytest~=8.4",
-    "ruff~=0.13"
+    "pydantic~=2.2",
+    "requests~=2.32",
+    "ruff~=0.13",
 ]
 
 # Below are settings for different tools we use for testing and linting
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -65,4 +66,7 @@ select = [
 ignore = [
     # whitespace-before-punctuation
     "E203",
+    "SIM118",
+    "C416",
+    "SIM102"
 ]

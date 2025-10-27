@@ -12,8 +12,8 @@ repos:
     - id: ruff-format
 - repo: local
   hooks:
-    - id: pytest
-      name: pytest
-      entry: uv run pytest tests/
-      language: system
+    - id: uv-upgrade
+      name: uv-upgrade
       pass_filenames: false
+      entry: uv lock --upgrade
+      language: system
