@@ -52,7 +52,9 @@ class DownloadManager(BaseModel):
         """
         trgt = self.data.joinpath("data")
         if trgt.exists():
-            logger.warning(f"{trgt.name} already exists. Remove {trgt.name} and fasta dirs to re-download - SKIP")
+            logger.warning(
+                f"{trgt.name} already exists. Remove {trgt.name} and fasta dirs to re-download - SKIP"
+            )
             return
 
         response_metadata = requests.get(self.record_url)
@@ -68,7 +70,7 @@ class DownloadManager(BaseModel):
         response_data = requests.get(files_url)
         if response_data.status_code != 200:
             raise RuntimeError(
-                f"Error downloading 'mite_data' record: {response_data.status_code}"
+                f"Error downloading 'mite_data' record: status code {response_data.status_code}"
             )
 
         with open(self.data.joinpath("record.zip"), "wb") as f:

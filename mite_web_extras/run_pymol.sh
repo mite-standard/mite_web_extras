@@ -2,7 +2,7 @@
 
 mkdir -p /data/img
 
-for pdb in data/pdb/*.pdb; do
+for pdb in /data/pdb/*.pdb; do
   filename=$(basename -- "$pdb");
   filename=${filename%.pdb}
   output_path="/data/img/$filename.png"
