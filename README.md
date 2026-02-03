@@ -12,9 +12,11 @@ Contents
 
 ## Overview
 
-MITE (Minimum Information about a Tailoring Enzyme) is a community-driven database for the characterization of tailoring enzymes. These enzymes play crucial roles in the biosynthesis of secondary or specialized metabolites, naturally occurring molecules with strong biological activities, such as antibiotic properties.
+MITE (Minimum Information about a Tailoring Enzyme) is a community-driven database for the characterization of tailoring enzymes. 
+These enzymes play crucial roles in the biosynthesis of secondary or specialized metabolites, naturally occurring molecules with strong biological activities, such as antibiotic properties.
 
-This repository manages auxiliary files for the [MITE Webpage](https://mite.bioinformatics.nl/) and is intended for internal use. Briefly, the code in this repository:
+This repository manages auxiliary files for the [MITE Webpage](https://mite.bioinformatics.nl/) and is intended for internal use. 
+Briefly, the code in this repository:
 
 - Downloads the newest version of `mite_data`
 - Generates the BLAST databases needed by MITE Web
@@ -28,7 +30,7 @@ For more information, visit the [MITE Data Standard Organization page](https://g
 
 Update the auxiliary files (automatically updates to the newest version of `mite_data`).
 
-Previous temporary dirs (`data/data`, `data/fasta`, `data/pdb`) need to be manually removed if they are to be newly downloaded. 
+Previous downloaded temporary dirs (`data/data`, `data/fasta`, `data/pdb`) need to be manually removed if they are to be newly downloaded. 
 
 ```commandline
 docker build -t mite-cli .
