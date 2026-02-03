@@ -1,6 +1,6 @@
 [project]
 name = "mite_web_extras"
-version = "0.5.0"
+version = "1.22"
 description = "Contains auxiliary files for mite_web"
 readme = "README.md"
 requires-python = ">=3.12"
