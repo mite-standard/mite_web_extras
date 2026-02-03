@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.22] 03-02-2026
+
+### Added
+
+- Update for `mite_data` `v1.22`
+
+### Changed
+
+- Adjusted semantic versioning style to `mite_data` for consistency
+
 ## [0.5.0] 20-12-2025
 
 ### Added
