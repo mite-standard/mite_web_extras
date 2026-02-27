@@ -26,7 +26,17 @@ Briefly, the code in this repository:
 
 For more information, visit the [MITE Data Standard Organization page](https://github.com/mite-standard) or read our [publication](https://doi.org/10.1093/nar/gkaf969).
 
-## Quickstart
+## Attribution
+
+### License
+
+This repository is licensed under the [MIT License](LICENSE)
+
+### Publications
+
+You can find additional citation information in the [CITATION.cff](CITATION.cff) file. 
+
+## For Developers
 
 Update the auxiliary files (automatically updates to the newest version of `mite_data`).
 
@@ -38,14 +48,3 @@ docker run --rm -v $(pwd)/data:/data -u $(id -u):$(id -g) -e HOME=/tmp mite-cli
 ```
 
 Already existing images will not be overwritten.
-
-## Attribution
-
-### License
-
-This repository is licensed under the [MIT License](LICENSE)
-
-### Publications
-
-You can find additional citation information in the [CITATION.cff](CITATION.cff) file. 
-
