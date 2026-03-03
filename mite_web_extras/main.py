@@ -23,6 +23,7 @@ SOFTWARE.
 
 import json
 import logging
+import shutil
 import sys
 from pathlib import Path
 
@@ -41,7 +42,7 @@ def config_logger() -> logging.Logger:
         A Logger object
     """
     logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.INFO)
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(
         coloredlogs.ColoredFormatter(

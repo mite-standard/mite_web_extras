@@ -7,6 +7,7 @@ mite_web_extras
 Contents
 -----------------
 - [Overview](#overview)
+- [Documentation](#documentation)
 - [Attribution](#attribution)
 - [For Developers](#for-developers)
 
@@ -15,7 +16,14 @@ Contents
 MITE (Minimum Information about a Tailoring Enzyme) is a community-driven database for the characterization of tailoring enzymes. 
 These enzymes play crucial roles in the biosynthesis of secondary or specialized metabolites, naturally occurring molecules with strong biological activities, such as antibiotic properties.
 
-This repository manages auxiliary files for the [MITE Webpage](https://mite.bioinformatics.nl/) and is intended for internal use. 
+This repository manages artifacts for the [MITE Webpage](https://mite.bioinformatics.nl/) and is intended for internal use.
+
+For more information, visit the [MITE Data Standard Organization page](https://github.com/mite-standard) or read our [publication](https://doi.org/10.1093/nar/gkaf969).
+
+## Documentation
+
+This repository contains artifacts derived from the `mite_data` dataset.
+
 Briefly, the code in this repository:
 
 - Downloads the newest version of `mite_data`
@@ -23,8 +31,6 @@ Briefly, the code in this repository:
 - Generates the Jinja2-compatible mite JSON files (only if change is detected between current and previous version)
 - Downloads `.pdb` files from AlphaFoldDB matching the UniProt Accessions in the MITE data files
 - Generates visualizations of predicted protein structures
-
-For more information, visit the [MITE Data Standard Organization page](https://github.com/mite-standard) or read our [publication](https://doi.org/10.1093/nar/gkaf969).
 
 ## Attribution
 

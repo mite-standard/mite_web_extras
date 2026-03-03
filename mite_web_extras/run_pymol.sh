@@ -2,13 +2,17 @@
 
 mkdir -p /data/img
 
+if [ ! -d dir ]; then
+   echo "Did not find /pdb directory"
+   return 1
+fi
+
 for pdb in /data/pdb/*.pdb; do
   filename=$(basename -- "$pdb");
   filename=${filename%.pdb}
   output_path="/data/img/$filename.png"
 
   if [ -f "$output_path" ]; then
-    echo "Skipping $filename (image already exists)"
     continue
   fi
 

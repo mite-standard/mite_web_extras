@@ -1,0 +1,39 @@
+name: Prepare release
+
+run-name: Pushed by ${{ github.actor }}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+on: workflow_dispatch
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Build Docker image
+        run: docker build -t mite-pipeline .
+
+      - name: Run pipeline
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/data:/data \
+            -e HOME=/tmp \
+            mite-cli
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v8
+        with:
+          commit-message: "Update generated artifacts"
+          branch: ci/artifacts-${{ github.sha }}
+          title: "Automated artifact update"
+          body: "This PR updates generated artifacts."
+          base: main

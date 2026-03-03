@@ -1,3 +1,28 @@
+# Inspired by https://github.com/astral-sh/uv-docker-example/blob/main/standalone.Dockerfile
+
+# First, build the application in the `/mite_web_extras` directory
+FROM ghcr.io/astral-sh/uv:bookworm-slim AS builder
+ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy UV_NO_DEV=1
+
+# Configure the Python directory so it is consistent, only use managed version
+ENV UV_PYTHON_INSTALL_DIR=/python UV_PYTHON_PREFERENCE=only-managed
+
+# Install Python before the project for caching
+RUN uv python install 3.12
+
+# Download and install dependencies
+WORKDIR /mite_web_extras
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --locked --no-install-project
+
+# Install project
+COPY . /mite_web_extras
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --locked
+
+
 FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -15,24 +40,27 @@ RUN apt-get update && apt-get upgrade -y && \
     rm -rf /var/lib/apt/lists/*
 
 
-# Install python and uv
-RUN add-apt-repository ppa:deadsnakes/ppa && apt-get update && apt-get install -y python3.12 python3.12-dev python3-pip
-RUN pip install --upgrade pip
-RUN pip install uv
-ENV PYTHONUNBUFFERED=1
+# Setup a non-root user
+RUN groupadd --system --gid 999 nonroot \
+ && useradd --system --gid 999 --uid 999 --create-home nonroot
 
-# Set up workspace
-ENV INSTALL_PATH=/mite_web_extras
-WORKDIR $INSTALL_PATH
+# Copy the Python version
+COPY --from=builder --chown=nonroot:nonroot /python /python
 
-# Copy the whole repository
-COPY . .
+# Copy the application from the builder
+COPY --from=builder --chown=nonroot:nonroot /mite_web_extras /mite_web_extras
 
-# Install package and dependencies
-RUN uv sync
+# Place executables in the environment at the front of the path
+ENV PATH="/mite_web_extras/.venv/bin:$PATH"
 
-RUN chmod +x ./entrypoint_docker.sh
-RUN chmod +x ./mite_web_extras/run_pymol.sh
+# Prevent Python from writing .pyc files
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+
+# Use `/mite_web_extras` as the working directory
+WORKDIR /mite_web_extras
+
+# Use the non-root user to run our application
+USER nonroot
 
 # Set default entrypoint to your CLI
-ENTRYPOINT ["./entrypoint_docker.sh"]
+CMD ["./entrypoint_docker.sh"]

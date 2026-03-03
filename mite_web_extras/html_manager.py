@@ -52,7 +52,7 @@ class HtmlJsonManager(BaseModel):
                     trgt_data = json.load(infile)
 
                 if mite_data["changelog"] == trgt_data["changelog"]:
-                    logger.info(f"Skipping {trgt.name} (identical changelog)")
+                    logger.debug(f"Skipping {trgt.name} (identical changelog)")
                     continue
 
             parser = MiteParser()
