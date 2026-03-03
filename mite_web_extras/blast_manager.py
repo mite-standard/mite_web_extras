@@ -48,11 +48,10 @@ class BlastManager(BaseModel):
         trgt = self.data.joinpath("mite_concat.fasta")
 
         with open(trgt, "w") as outfile:
-            for filename in src.iterdir():
-                if filename.suffix == ".fasta":
-                    with open(filename) as infile:
-                        shutil.copyfileobj(infile, outfile)
-                        outfile.write("\n")
+            for filename in sorted(src.glob("*.fasta")):
+                with open(filename) as infile:
+                    shutil.copyfileobj(infile, outfile)
+                    outfile.write("\n")
 
     def generate_blast_db(self: Self) -> None:
         """Starts subprocess to generate a BLAST DB from the (downloaded) protein FASTA files"""
