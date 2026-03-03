@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 2
 
       - name: Build Docker image
-        run: docker build -t mite-pipeline .
+        run: docker build -t mite-cli .
 
       - name: Run pipeline
         run: |
