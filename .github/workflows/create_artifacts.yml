@@ -24,6 +24,7 @@ jobs:
       - name: Run pipeline
         run: |
           docker run --rm \
+            -u $(id -u):$(id -g) \
             -v ${{ github.workspace }}/data:/data \
             -e HOME=/tmp \
             mite-cli
