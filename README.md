@@ -22,15 +22,14 @@ For more information, visit the [MITE Data Standard Organization page](https://g
 
 ## Documentation
 
-This repository contains artifacts derived from the `mite_data` dataset.
+This repository contains artifacts derived from the `mite_data` dataset, utilized by the [MITE Webpage](https://mite.bioinformatics.nl/).
 
-Briefly, the code in this repository:
+This includes:
+- The BLAST databases
+- Jinja2-compatible mite JSON files 
+- Images of predicted protein structures
 
-- Downloads the newest version of `mite_data`
-- Generates the BLAST databases needed by MITE Web
-- Generates the Jinja2-compatible mite JSON files (only if change is detected between current and previous version)
-- Downloads `.pdb` files from AlphaFoldDB matching the UniProt Accessions in the MITE data files
-- Generates visualizations of predicted protein structures
+The code is designed to run as CI/CD by GitHub Actions.
 
 ## Attribution
 
@@ -44,13 +43,21 @@ You can find additional citation information in the [CITATION.cff](CITATION.cff)
 
 ## For Developers
 
-Update the auxiliary files (automatically updates to the newest version of `mite_data`).
+### Release checklist
 
-Previous downloaded temporary dirs (`data/data`, `data/fasta`, `data/pdb`) need to be manually removed if they are to be newly downloaded. 
+Workflow for release creation (for details, see below):
+
+- In GitHub GUI, under Actions, manually trigger the `Prepare release` workflow and wait for successful passing. This will create artifacts and open a new pull request
+- Check the newly generated pull request, approve and merge it
+- Update minor `version` in [pyproject.toml](pyproject.toml) file and update the [CHANGELOG](CHANGELOG.md), merge to main.
+- On [new release](https://github.com/mite-standard/mite_web_extras/releases/new), fill in tag (as `version` in `pyproject.toml`), add v`version` as release title, and add release notes (identical to `changelog`).
+- Zenodo will automatically grab the new release.
+
+### Manual updating
+
+Locally, the artifacts can be updated using the following commands.
 
 ```commandline
 docker build -t mite-cli .
 docker run --rm -v $(pwd)/data:/data -u $(id -u):$(id -g) -e HOME=/tmp mite-cli
 ```
-
-Already existing images will not be overwritten.
