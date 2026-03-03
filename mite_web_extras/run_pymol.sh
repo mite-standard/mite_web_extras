@@ -2,7 +2,7 @@
 
 mkdir -p /data/img
 
-if [ ! -d dir ]; then
+if [ ! -d /data/pdb/ ]; then
    echo "Did not find /pdb directory"
    return 1
 fi
