@@ -1,10 +1,18 @@
+[build-system]
+requires = ["uv_build >= 0.11.7, <0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "mite_web_extras"
+module-root = ""
+
 [project]
 name = "mite_web_extras"
 version = "1.27"
 description = "Contains auxiliary files for mite_web"
 readme = "README.md"
 requires-python = ">=3.12"
-license-files = { paths = ["LICENSE"] }
+license-files = ["LICENSE"]
 authors = [
     { name = "Mitja M. Zdouc", email = "zdoucmm@gmail.com" }
 ]
@@ -15,10 +23,16 @@ dependencies = [
     "mite_extras",
     "pre-commit~=4.3",
     "psycopg2-binary",
-    "pytest~=8.4",
     "pydantic~=2.2",
     "requests~=2.32",
-    "ruff~=0.13",
+]
+
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit>=4.6.0",
+    "pytest>=9.0.3",
+    "ruff>=0.15.13",
 ]
 
 # Below are settings for different tools we use for testing and linting

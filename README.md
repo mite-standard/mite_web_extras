@@ -43,6 +43,9 @@ You can find additional citation information in the [CITATION.cff](CITATION.cff)
 
 ## For Developers
 
+- Install the package with `uv sync`
+- Install `pre-commit` with `uv run pre-commit install`
+
 ### Release checklist
 
 Workflow for release creation (for details, see below):
