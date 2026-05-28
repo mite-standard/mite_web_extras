@@ -8,7 +8,7 @@ module-root = ""
 
 [project]
 name = "mite_web_extras"
-version = "1.27"
+version = "1.28"
 description = "Contains auxiliary files for mite_web"
 readme = "README.md"
 requires-python = ">=3.12"
