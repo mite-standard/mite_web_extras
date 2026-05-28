@@ -15,7 +15,7 @@ WORKDIR /mite_web_extras
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --no-install-project
+    uv sync --locked --no-install-project
 
 # Install project
 COPY . /mite_web_extras
