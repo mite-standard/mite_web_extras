@@ -50,9 +50,6 @@ COPY --from=builder --chown=nonroot:nonroot /python /python
 # Copy the application from the builder
 COPY --from=builder --chown=nonroot:nonroot /mite_web_extras /mite_web_extras
 
-# Place executables in the environment at the front of the path
-ENV PATH="/mite_web_extras/.venv/bin:$PATH"
-
 # Prevent Python from writing .pyc files
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 

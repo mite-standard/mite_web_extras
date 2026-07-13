@@ -2,7 +2,7 @@
 
 # run data download script
 echo "Started mite_web_extras"
-python -m mite_web_extras.main
+/mite_web_extras/.venv/bin/python -m mite_web_extras.main
 
 echo "Started image generation"
 # run image generation script
@@ -10,4 +10,4 @@ echo "Started image generation"
 
 echo "Started cleanup generation"
 # run cleanup script
-python -m mite_web_extras.cleanup
+/mite_web_extras/.venv/bin/python -m mite_web_extras.cleanup
