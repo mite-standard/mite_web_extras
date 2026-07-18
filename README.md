@@ -61,7 +61,7 @@ Workflow for release creation (for details, see below):
 Locally, the artifacts can be updated using the following commands.
 
 ```commandline
-uv sync # update the lock file
+uv lock --upgrade && uv sync # update the lock file
 docker build -t mite-cli .
 docker run --rm -v $(pwd)/data:/data -u $(id -u):$(id -g) -e HOME=/tmp mite-cli
 ```
